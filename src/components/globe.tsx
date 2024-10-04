@@ -51,11 +51,11 @@ const World = () => {
                 globe.controls().autoRotate = false;
                 globe.pointOfView({ lat: (d as any).lat, lng: (d as any).lng, altitude: 1.5 }, 1000);
 
-            };
-            return el;
-        }}
+        };
+        return el;
+    }}
 
-    />;
+  />;
 };
 
 export default World;
