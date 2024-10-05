@@ -5,7 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 interface Continent {
     name: string;
@@ -124,6 +124,29 @@ const continents = [
 
 export default function BlurredBackgroundContinentDrawer() {
     const [selectedContinent, setSelectedContinent] = useState<Continent | null>(null);
+    const [clickedContinents, setClickedContinents] = useState<{ [key: string]: boolean; }>({});
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const handleEscapeKey = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setSelectedContinent(null);
+            }
+        };
+
+        document.addEventListener('keydown', handleEscapeKey);
+
+        return () => {
+            document.removeEventListener('keydown', handleEscapeKey);
+        };
+    }, []);
+
+    const handleContinentClick = (continent: Continent) => {
+        setSelectedContinent(continent);
+        setClickedContinents(prev => ({ ...prev, [continent.name]: true }));
+        setCurrentImageIndex(0);
+    }
+
 
     useEffect(() => {
         const handleEscapeKey = (event: KeyboardEvent) => {
@@ -140,10 +163,10 @@ export default function BlurredBackgroundContinentDrawer() {
     }, []);
 
     return (
-        <div className="relative h-screen">
+        <div>
             <AnimatePresence>
                 {selectedContinent && (
-                    <>
+                    <Fragment>
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -162,7 +185,7 @@ export default function BlurredBackgroundContinentDrawer() {
                             exit={{ y: "100%" }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             className="fixed inset-x-0 bottom-0 z-50 w-full sm:w-[800px] mx-auto bg-background/80 backdrop-blur-sm border rounded-t-lg shadow-lg"
-                            style={{ maxHeight: "calc(100vh - 40px)" }}
+                            style={{ maxHeight: "calc(80vh - 40px)" }}
                         >
                             <ScrollArea className="h-[calc(95vh-40px)]">
                                 <div className="p-6">
@@ -209,16 +232,17 @@ export default function BlurredBackgroundContinentDrawer() {
                                 Close
                             </Button>
                         </motion.div>
-                    </>
+                    </Fragment>
                 )}
             </AnimatePresence>
-            <div className="fixed inset-x-0 bottom-0 p-4 bg-transparent">
-                <div className="flex flex-wrap justify-center gap-2">
+            <div className="fixed inset-x-0 bottom-0 p-1 sm:p-2 bg-transparent">
+                <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-2 max-w-3xl mx-auto">
                     {continents.map((continent) => (
                         <Button
                             key={continent.name}
                             variant="outline"
-                            onClick={() => setSelectedContinent(continent)}
+                            onClick={() => handleContinentClick(continent)}
+                            className={`${clickedContinents[continent.name] ? "bg-green-500 hover:bg-green-600 text-white" : ""}`}
                         >
                             {continent.name}
                         </Button>
