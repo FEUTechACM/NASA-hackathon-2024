@@ -1,5 +1,3 @@
-"use client";
-
 import * as Slider from "@radix-ui/react-slider";
 import { motion } from "framer-motion";
 import { Settings, Volume2 } from "lucide-react";
@@ -9,10 +7,9 @@ import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
-    DropdownMenuTrigger,
+    DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -21,7 +18,6 @@ export default function SettingsComponent() {
     const [isOpen, setIsOpen] = useState(false);
     const [soundEnabled, setSoundEnabled] = useState(false);
     const [volume, setVolume] = useState(50);
-    const [skin, setSkin] = useState("Natural");
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
