@@ -113,17 +113,6 @@ export default function SettingsComponent() {
                                 </div>
                             )}
                         </div>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuLabel>Earth Skin</DropdownMenuLabel>
-                        <DropdownMenuItem onClick={() => setSkin("Natural")}>
-                            {skin === "Natural" && "✓ "}Natural
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setSkin("Day")}>
-                            {skin === "Day" && "✓ "}Day
-                        </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setSkin("Night")}>
-                            {skin === "Night" && "✓ "}Night
-                        </DropdownMenuItem>
                     </motion.div>
                 </DropdownMenuContent>
             </DropdownMenu>
