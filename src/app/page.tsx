@@ -138,7 +138,7 @@ const continents: Continent[] = [
       "Bradshaw, C. J. A. (2012). Little left to lose: deforestation and forest degradation in Australia since European colonization. Journal of Plant Ecology, 5(1), 109-120. https://doi.org/10.1093/jpe/rtr038"
     ],
     continentPath: "/map/aus.png",
-    narrationPath: "/sound/austalia.mp3",
+    narrationPath: "/sound/australia.mp3",
     imageReferences: ["https://www.cnn.com/2021/09/06/business/australia-warned-climate-coal-intl-hnk/index.html", "https://bilyonaryo.com/2023/09/06/australia-plan-to-close-largest-coal-power-station-in-doubt/power/", "https://optraffic.com/blog/australia-traffic-congestion-cause-and-solution/ "]
   },
 ];
