@@ -1,15 +1,14 @@
 "use client";
 
-import { Html, OrbitControls, PerspectiveCamera, useTexture } from '@react-three/drei';
+import { Html, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { Canvas, useLoader, useThree } from '@react-three/fiber';
 import { useEffect, useState } from 'react';
 import * as THREE from 'three';
 
 // Update the marker data type
-import type { THoverInfo, TMarker } from './africa';
-import { Marker } from './africa';
-import { Background } from './africa';
 import ResponsiveNarrationPlayer from '../narration';
+import type { THoverInfo, TMarker } from './africa';
+import { Background, Marker } from './africa';
 
 
 // Define the marker data with the correct type
