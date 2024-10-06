@@ -19,7 +19,7 @@ export interface IVolume {
     volume: number;
     setVolume: (volume: number) => void;
 }
-const Discover: React.FC<ISound> = ({ soundEnabled, setSoundEnabled }) => {
+const Discover: React.FC<ISound> = ({ setSoundEnabled }) => {
     const [isOpen, setIsOpen] = useState(true);
 
     useEffect(() => {
