@@ -5,7 +5,7 @@ import ExtendedContinentDrawer from "@/components/drawer";
 import GlobeWrapper from "@/components/globewrapper";
 import SettingsComponent from "@/components/settings";
 import { Button } from "@/components/ui/button";
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 export interface Continent {
   id: string;
   name: string;
@@ -143,17 +143,43 @@ const continents: Continent[] = [
   },
 ];
 
+
 const Page = () => {
   const [selectedContinent, setSelectedContinent] = useState<Continent | null>(null);
   const [clickedContinents, setClickedContinents] = useState<{ [key: string]: boolean; }>({});
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [volume, setVolume] = useState(50);
+  const [showVideoPopup, setShowVideoPopup] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const allContinentsClickedRef = useRef(false);
 
   const handleContinentSelect = (continent: Continent) => {
     setClickedContinents(prev => ({ ...prev, [continent.name]: true }));
     setSelectedContinent(prevContinent =>
       prevContinent?.name === continent.name ? null : continent
     );
+  };
+
+  useEffect(() => {
+    const allContinentsClicked = continents.every(continent => clickedContinents[continent.name]);
+    allContinentsClickedRef.current = allContinentsClicked;
+  }, [clickedContinents]);
+
+  useEffect(() => {
+    if (allContinentsClickedRef.current && selectedContinent === null) {
+      setShowVideoPopup(true);
+      setSoundEnabled(false);
+    }
+  }, [selectedContinent]);
+
+  useEffect(() => {
+    if (showVideoPopup && videoRef.current) {
+      videoRef.current.play();
+    }
+  }, [showVideoPopup]);
+
+  const handleCloseContinent = () => {
+    setSelectedContinent(null);
   };
 
   return (
@@ -169,7 +195,7 @@ const Page = () => {
       />
       <ExtendedContinentDrawer
         selectedContinent={selectedContinent}
-        onClose={() => setSelectedContinent(null)}
+        onClose={handleCloseContinent}
       />
       <div className="fixed inset-x-0 z-40 bottom-0 p-1 sm:p-2 bg-transparent">
         <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 max-w-3xl mx-auto">
@@ -178,12 +204,40 @@ const Page = () => {
               key={continent.name}
               variant="outline"
               onClick={() => handleContinentSelect(continent)}
-              className={`${clickedContinents[continent.name] ? "bg-green-500 hover:bg-green-600 text-white" : ""}`}            >
+              className={`${clickedContinents[continent.name] ? "bg-green-500 hover:bg-green-600 text-white" : ""}`}
+            >
               {continent.name}
             </Button>
           ))}
         </div>
       </div>
+      {showVideoPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+          <div className="w-11/12 h-11/12 max-w-4xl max-h-[80vh]">
+            <video
+              ref={videoRef}
+              className="w-full h-full"
+              controls
+              autoPlay
+              src="/ENDING.mp4"
+            >
+              Your browser does not support the video tag.
+            </video>
+            <Button
+              className="mt-4 bg-white text-black hover:bg-gray-200"
+              onClick={() => {
+                setShowVideoPopup(false);
+                if (videoRef.current) {
+                  videoRef.current.pause();
+                  videoRef.current.currentTime = 0;
+                }
+              }}
+            >
+              Close Video
+            </Button>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
