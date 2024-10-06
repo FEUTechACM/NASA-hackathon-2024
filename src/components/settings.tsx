@@ -46,7 +46,7 @@ const teamMembers = [
         name: "Marc Olata",
         position: "Documentation Specialist",
         image: "/credits/olata.jpg",
-        linkedin: "https://www.linkedin.com/in/johndoe",
+        linkedin: "https://www.facebook.com/profile.php?id=100087194946054",
     },
     {
         name: "Abraham Magpantay",
@@ -204,7 +204,7 @@ const SettingsComponent: React.FC<ISound & IVolume> = ({ setSoundEnabled, soundE
                                                 className="rounded-full mb-4"
                                             />
                                             <h3 className="text-lg font-semibold text-center">{member.name}</h3>
-                                            <p className="text-sm text-muted-foreground mb-2 text-balance">{member.position}</p>
+                                            <p className="text-sm text-muted-foreground mb-2 text-balance text-center">{member.position}</p>
                                         </a>
                                     ))}
                                 </div>
