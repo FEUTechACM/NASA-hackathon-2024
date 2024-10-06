@@ -183,9 +183,9 @@ export default function SettingsComponent() {
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
-                            className="fixed inset-10 bg-transparent rounded-lg shadow-lg overflow-auto"
+                            className="fixed inset-0 md:inset-10 bg-transparent rounded-lg shadow-lg overflow-auto"
                         >
-                            <div className="p-6">
+                            <div className="p-6 w-full">
                                 <div className="flex justify-between items-center mb-4">
                                     <h2 className="text-2xl font-bold text-white">Credits</h2>
                                     <Button variant="secondary" className="" size="icon" onClick={() => setShowCredits(false)}>
@@ -193,7 +193,7 @@ export default function SettingsComponent() {
                                         <span className="sr-only">Close</span>
                                     </Button>
                                 </div>
-                                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-6">
                                     {teamMembers.map((member, index) => (
                                         <a href={member.linkedin} key={index} className="flex flex-col items-center p-4 bg-muted rounded-lg">
                                             <Image
@@ -203,8 +203,8 @@ export default function SettingsComponent() {
                                                 height={100}
                                                 className="rounded-full mb-4"
                                             />
-                                            <h3 className="text-lg font-semibold">{member.name}</h3>
-                                            <p className="text-sm text-muted-foreground mb-2">{member.position}</p>
+                                            <h3 className="text-lg font-semibold text-center">{member.name}</h3>
+                                            <p className="text-sm text-muted-foreground mb-2 text-balance">{member.position}</p>
                                         </a>
                                     ))}
                                 </div>
