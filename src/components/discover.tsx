@@ -24,11 +24,9 @@ const Discover: React.FC<ISound> = ({ soundEnabled, setSoundEnabled }) => {
 
     useEffect(() => {
         // enable sound when is open is set to false
-        if (soundEnabled && !isOpen) {
-            setSoundEnabled(false);
+        if (!isOpen) {
+            setSoundEnabled(true);
         }
-
-
     }, [isOpen, setSoundEnabled]);
 
     return (
