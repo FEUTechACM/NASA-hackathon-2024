@@ -15,10 +15,9 @@ type Marker = {
 
 // Define the marker data with the correct type
 const markers: Marker[] = [
-    { position: [1.5, 0.5, -1.4], note: "Brazil", image: "/placeholder.svg?height=200&width=300", story: "In Brazil, the fields resonate with the low hum of cattle grazing. Methane rises from their digestion, a significant contributor to South America's emissions. The land and mines also add to the methane mix. Efforts to mitigate these effects focus on sustainable livestock practices and improved waste management." },
-    { position: [0, 0.5, 2.4], note: "Argentina", image: "/placeholder.svg?height=200&width=300", story: "In Argentina, cattle ranching dominates the landscape, producing methane through livestock digestion. The agricultural lands and mining activities contribute further emissions. Strategies here include better agricultural practices and enhanced methane capture technologies to reduce the environmental footprint." },
-    { position: [0, 0.5, -3.4], note: "Colombia", image: "/placeholder.svg?height=200&width=300", story: "In Colombia, livestock farming and landfills release substantial methane into the atmosphere. Agricultural advancements and waste management improvements are key measures to control these emissions. The country's focus on modernizing farming practices aims to lessen the impact on the environment." },
-    { position: [-1.1, 0.5, -1.5], note: "Peru", image: "/placeholder.svg?height=200&width=300", story: "In Peru, methane emissions are primarily driven by livestock farming and mining operations. The government is working on improving agricultural methods and waste management practices to control these emissions. Methane capture technologies are also being explored to reduce the environmental footprint." },
+    {
+        position: [0, 0.5, 0], note: "Australia", image: "/placeholder.svg?height=200&width=300", story: "Australia faces serious problems with carbon emissions due to the burning of fossil fuels for fuel and transport, as well as deforestation. The coal industry is the largest contributor to CO2 emissions, with coal-fired power plants producing the most. In addition, the mining sector, which produces coal, iron, and other minerals, contributes to emissions through heavy machinery and transport. Agricultural development, especially animal husbandry, leads to deforestation, increasing natural growth. Logging companies also help convert forests into timber."
+    },
 ];
 
 interface MarkerProps {
@@ -80,7 +79,7 @@ function Background() {
 function IsometricMap() {
     const [mapSize] = useState({ width: 19.20, height: 10.80 });
     const [selectedMarker, setSelectedMarker] = useState<HoverInfo | null>(null);
-    const texture = useLoader(THREE.TextureLoader, '/map/sa.png');
+    const texture = useLoader(THREE.TextureLoader, '/map/aus.png');
 
     const { camera } = useThree();
 
@@ -117,7 +116,7 @@ function IsometricMap() {
     );
 }
 
-export default function SouthAmericaComponent() {
+export default function AustraliaComponent() {
     return (
         <div className="w-full h-screen bg-white">
             <Canvas shadows>

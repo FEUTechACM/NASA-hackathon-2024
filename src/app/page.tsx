@@ -17,6 +17,7 @@ export interface Continent {
   description: string;
   story: string;
   references: string[];
+  narrationPath: string;
   imageReferences: string[];
 }
 
@@ -32,6 +33,7 @@ const continents: Continent[] = [
       "Canada, E. a. C. C. (2024, May 2). Greenhouse gas emissions. Canada.ca. https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/greenhouse-gas-emissions.html",
       "Canada, E. a. C. C. (2024, May 6). Where Canada's greenhouse gas emissions come from: 2024 National Greenhouse Gas Inventory. Canada.ca. https://www.canada.ca/en/environment-climate-change/news/2024/05/where-canadas-greenhouse-gas-emissions-come-from-2024-national-greenhouse-gas-inventory.html"
     ],
+    narrationPath: "/sound/north-america.mp3",
     imageReferences: [
       "https://albertaworker.ca/politics/alberta-oil-extraction-uses-a-lot-of-energy/",
       "https://www.reuters.com/business/energy/us-oil-refiners-defy-heat-run-plants-mid-90-capacity-2023-08-09/",
@@ -50,6 +52,7 @@ const continents: Continent[] = [
       "Statista. (2024, June 12). CO₂ emissions in Germany - statistics & facts. https://www.statista.com/topics/10972/co2-emissions-in-germany/",
       "Climate action in Poland: Latest state of play | Think Tank | European Parliament. (n.d.). https://www.europarl.europa.eu/thinktank/en/document/EPRS_BRI(2021)698766"
     ],
+    narrationPath: "/sound/europe.mp3",
     imageReferences: [
       "https://gmk.center/en/news/spain-increased-steel-production-by-10-m-m-in-may/",
       "https://www.ukconstructionmedia.co.uk/news/highways-england-announce-new-contracts/",
@@ -70,6 +73,7 @@ const continents: Continent[] = [
       "Angelsen, A., Ladewig, M., & Imbert, A. (2024, September 20). Mining in the Congo rainforest causes more deforestation than previously assumed. CIFOR-ICRAF Forests News. https://forestsnews.cifor.org/89558/mining-in-the-congo-rainforest-causes-more-deforestation",
       "Global Methane Initiative. (n.d.). https://www.globalmethane.org/(X(1)S(04f2ln1ignncgojfd2vfa1n5))/documents/ag_ethiopia_res_assessment.pdf"
     ],
+    narrationPath: "/sound/africa.mp3",
     imageReferences: [
       "https://apnews.com/article/uganda-charcoal-ban-deforestation-vigilantes-dd0cbcd0e4515afe6be8c76c4a7f7cc6",
       "https://www.natureguardian.org/2021/10/climate-change-au-urged-to-address-threat-of-congo-forest-logging/",
@@ -88,6 +92,7 @@ const continents: Continent[] = [
       "Cutting livestock methane emissions for stronger climate action. (2022, June 10). EntericMethane. https://www.fao.org/in-action/enteric-methane/news-and-events/news-detail/cutting-livestock-methane-emissions-for-stronger-climate-action/en",
       "Yuki. (2024, May 31). Sustainable farming practices in Latin America. The Borgen Project. https://borgenproject.org/sustainable-farming-practices-in-latin-america/"
     ],
+    narrationPath: "/sound/south-america.mp3",
     imageReferences: [
       "https://www.ft.com/content/9225a0a0-5d2d-11e9-840c-530737425559",
       "https://storymaps.arcgis.com/stories/61f6fa34473149ec9ec37f3393791721",
@@ -109,6 +114,7 @@ const continents: Continent[] = [
       "Liu, B., Guan, Y., Shan, Y., Cui, C., & Hubacek, K. (2022). Emission growth and drivers in Mainland Southeast Asian countries. Journal of Environmental Management, 329, 117034. https://doi.org/10.1016/j.jenvman.2022.117034"
 
     ],
+    narrationPath: "/sound/asia.mp3",
     imageReferences: [
       "https://www.japantimes.co.jp/news/2020/05/13/business/coronavirus-stimulus-coal-southeast-asia-japan/",
       "https://www.businessinsider.com/new-delhi-smog-air-pollution-photos-2019-11",
@@ -125,6 +131,7 @@ const continents: Continent[] = [
       "The Australia Institute. (2024, October 4). Coal Mine Tracker | The Australia Institute. https://australiainstitute.org.au/initiative/coal-mine-tracker/",
       "Bradshaw, C. J. A. (2012). Little left to lose: deforestation and forest degradation in Australia since European colonization. Journal of Plant Ecology, 5(1), 109-120. https://doi.org/10.1093/jpe/rtr038"
     ],
+    narrationPath: "/sound/australia.mp3",
     imageReferences: ["https://www.cnn.com/2021/09/06/business/australia-warned-climate-coal-intl-hnk/index.html", "https://bilyonaryo.com/2023/09/06/australia-plan-to-close-largest-coal-power-station-in-doubt/power/", "https://optraffic.com/blog/australia-traffic-congestion-cause-and-solution/ "]
   },
 ];

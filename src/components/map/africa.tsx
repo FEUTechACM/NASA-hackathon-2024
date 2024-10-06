@@ -15,10 +15,17 @@ type Marker = {
 
 // Define the marker data with the correct type
 const markers: Marker[] = [
-    { position: [1.5, 0.5, -1.4], note: "Brazil", image: "/placeholder.svg?height=200&width=300", story: "In Brazil, the fields resonate with the low hum of cattle grazing. Methane rises from their digestion, a significant contributor to South America's emissions. The land and mines also add to the methane mix. Efforts to mitigate these effects focus on sustainable livestock practices and improved waste management." },
-    { position: [0, 0.5, 2.4], note: "Argentina", image: "/placeholder.svg?height=200&width=300", story: "In Argentina, cattle ranching dominates the landscape, producing methane through livestock digestion. The agricultural lands and mining activities contribute further emissions. Strategies here include better agricultural practices and enhanced methane capture technologies to reduce the environmental footprint." },
-    { position: [0, 0.5, -3.4], note: "Colombia", image: "/placeholder.svg?height=200&width=300", story: "In Colombia, livestock farming and landfills release substantial methane into the atmosphere. Agricultural advancements and waste management improvements are key measures to control these emissions. The country's focus on modernizing farming practices aims to lessen the impact on the environment." },
-    { position: [-1.1, 0.5, -1.5], note: "Peru", image: "/placeholder.svg?height=200&width=300", story: "In Peru, methane emissions are primarily driven by livestock farming and mining operations. The government is working on improving agricultural methods and waste management practices to control these emissions. Methane capture technologies are also being explored to reduce the environmental footprint." },
+    {
+        position: [-2.8, 0.5, -1.8], note: "Nigeria", image: "/placeholder.svg?height=200&width=300", story: "Nigeria, the landscape transforms as forests yield to fields and cities rise from the earth. This shift in land use carves a substantial mark on Africa's carbon footprint. The story of progress intertwines with the breath of the land, echoing both growth and its environmental toll."
+    },
+    {
+        position: [3.6, 0.5, 1], note: "Uganda", image: "/placeholder.svg?height=200&width=300", story:
+            "Uganda, the aroma of burning leaves fills the air as they crackle in cooking fires. Methane rises, a silent companion to the meals prepared. This ancient practice whispers tales of tradition and necessity, blending with the modern world's unseen impacts."
+    },
+    {
+        position: [0.2, 0.5, 1], note: "Congo Valley", image: "/placeholder.svg?height=200&width=300", story: "Congo Valley, the tale of carbon emissions begins with the sound of axes and saws.Vast rainforests bow to agriculture and logging, releasing stored carbon into the air.This transformation etches its mark on Africa's carbon footprint, blending the rhythm of progress with echoes of loss."
+    },
+    { position: [4, 0.5, -1.8], note: "Ethiopia", image: "/placeholder.svg?height=200&width=300", story: "Ethiopia, vast livestock farms stretch across the land, where animals graze and grow. Methane rises from their digestion, a silent yet potent contributor to the air. This scene of pastoral life intertwines with the threads of environmental impact, weaving a tale of tradition and change.Ethiopia, vast livestock farms stretch across the land, where animals graze and grow.Methane rises from their digestion, a silent yet potent contributor to the air.This scene of pastoral life intertwines with the threads of environmental impact, weaving a tale of tradition and change." },
 ];
 
 interface MarkerProps {
@@ -80,7 +87,7 @@ function Background() {
 function IsometricMap() {
     const [mapSize] = useState({ width: 19.20, height: 10.80 });
     const [selectedMarker, setSelectedMarker] = useState<HoverInfo | null>(null);
-    const texture = useLoader(THREE.TextureLoader, '/map/sa.png');
+    const texture = useLoader(THREE.TextureLoader, '/map/africa.png');
 
     const { camera } = useThree();
 
@@ -117,7 +124,7 @@ function IsometricMap() {
     );
 }
 
-export default function SouthAmericaComponent() {
+export default function AfricaComponent() {
     return (
         <div className="w-full h-screen bg-white">
             <Canvas shadows>

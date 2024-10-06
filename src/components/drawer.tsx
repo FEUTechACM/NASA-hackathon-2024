@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import ResponsiveNarrationPlayer from "./narration";
 import { useEffect, useState } from "react";
 interface ExtendedContinentDrawerProps {
     selectedContinent: Continent | null;
@@ -97,9 +98,10 @@ export default function ExtendedContinentDrawer({ selectedContinent, onClose }: 
                                                         </Button>
                                                     </div>
                                                 </div>
-                                                <p className="text-primary mb-4">{selectedContinent.description}</p>
-                                            </div>
+                                                <ResponsiveNarrationPlayer narrationPath={selectedContinent.narrationPath} />
+                                                <p className="text-primary mb-4">{selectedContinent.description}</p>                                </div>
                                         </TabsContent>
+
                                         <TabsContent value="story">
                                             <p className="text-sm text-primary">{selectedContinent.story}</p>
                                         </TabsContent>
