@@ -12,6 +12,7 @@ export interface Continent {
   lat: number;
   lng: number;
   size: number;
+  continentPath: string;
   color: string;
   images: string[];
   description: string;
@@ -23,7 +24,7 @@ export interface Continent {
 
 const continents: Continent[] = [
   {
-    id: "na",
+    id: "north-america",
     name: 'North America', lat: 37, lng: -100, size: 40, color: 'red', images: [
       "/img/north-america/na1.png",
       "/img/north-america/na2.png",
@@ -34,6 +35,7 @@ const continents: Continent[] = [
       "Canada, E. a. C. C. (2024, May 6). Where Canada's greenhouse gas emissions come from: 2024 National Greenhouse Gas Inventory. Canada.ca. https://www.canada.ca/en/environment-climate-change/news/2024/05/where-canadas-greenhouse-gas-emissions-come-from-2024-national-greenhouse-gas-inventory.html"
     ],
     narrationPath: "/sound/north-america.mp3",
+    continentPath: "/map/na.png",
     imageReferences: [
       "https://albertaworker.ca/politics/alberta-oil-extraction-uses-a-lot-of-energy/",
       "https://www.reuters.com/business/energy/us-oil-refiners-defy-heat-run-plants-mid-90-capacity-2023-08-09/",
@@ -41,7 +43,7 @@ const continents: Continent[] = [
     ]
   },
   {
-    id: "eu",
+    id: "europe",
     name: 'Europe', lat: 51, lng: 20, size: 40, color: 'blue', images: [
       "/img/europe/eu1.png",
       "/img/europe/eu2.png",
@@ -53,6 +55,7 @@ const continents: Continent[] = [
       "Climate action in Poland: Latest state of play | Think Tank | European Parliament. (n.d.). https://www.europarl.europa.eu/thinktank/en/document/EPRS_BRI(2021)698766"
     ],
     narrationPath: "/sound/europe.mp3",
+    continentPath: "/map/europe.png",
     imageReferences: [
       "https://gmk.center/en/news/spain-increased-steel-production-by-10-m-m-in-may/",
       "https://www.ukconstructionmedia.co.uk/news/highways-england-announce-new-contracts/",
@@ -74,6 +77,7 @@ const continents: Continent[] = [
       "Global Methane Initiative. (n.d.). https://www.globalmethane.org/(X(1)S(04f2ln1ignncgojfd2vfa1n5))/documents/ag_ethiopia_res_assessment.pdf"
     ],
     narrationPath: "/sound/africa.mp3",
+    continentPath: "/map/africa.png",
     imageReferences: [
       "https://apnews.com/article/uganda-charcoal-ban-deforestation-vigilantes-dd0cbcd0e4515afe6be8c76c4a7f7cc6",
       "https://www.natureguardian.org/2021/10/climate-change-au-urged-to-address-threat-of-congo-forest-logging/",
@@ -81,7 +85,7 @@ const continents: Continent[] = [
     ]
   },
   {
-    id: "sa",
+    id: "south-america",
     name: 'South America', lat: -14, lng: -51, size: 40, color: 'yellow', images: [
       "/img/south-america/sa1.png",
       "/img/south-america/sa2.png",
@@ -92,6 +96,7 @@ const continents: Continent[] = [
       "Cutting livestock methane emissions for stronger climate action. (2022, June 10). EntericMethane. https://www.fao.org/in-action/enteric-methane/news-and-events/news-detail/cutting-livestock-methane-emissions-for-stronger-climate-action/en",
       "Yuki. (2024, May 31). Sustainable farming practices in Latin America. The Borgen Project. https://borgenproject.org/sustainable-farming-practices-in-latin-america/"
     ],
+    continentPath: "/map/sa.png",
     narrationPath: "/sound/south-america.mp3",
     imageReferences: [
       "https://www.ft.com/content/9225a0a0-5d2d-11e9-840c-530737425559",
@@ -115,6 +120,7 @@ const continents: Continent[] = [
 
     ],
     narrationPath: "/sound/asia.mp3",
+    continentPath: "/map/asia.png",
     imageReferences: [
       "https://www.japantimes.co.jp/news/2020/05/13/business/coronavirus-stimulus-coal-southeast-asia-japan/",
       "https://www.businessinsider.com/new-delhi-smog-air-pollution-photos-2019-11",
@@ -122,7 +128,7 @@ const continents: Continent[] = [
     ]
   },
   {
-    id: "aus",
+    id: "australia",
     name: 'Australia', lat: -25, lng: 133, size: 40, color: 'orange', images: [
       "/img/australia/aus1.png",
       "/img/australia/aus2.png",
@@ -131,7 +137,8 @@ const continents: Continent[] = [
       "The Australia Institute. (2024, October 4). Coal Mine Tracker | The Australia Institute. https://australiainstitute.org.au/initiative/coal-mine-tracker/",
       "Bradshaw, C. J. A. (2012). Little left to lose: deforestation and forest degradation in Australia since European colonization. Journal of Plant Ecology, 5(1), 109-120. https://doi.org/10.1093/jpe/rtr038"
     ],
-    narrationPath: "/sound/australia.mp3",
+    continentPath: "/map/aus.png",
+    narrationPath: "/sound/aus.mp3",
     imageReferences: ["https://www.cnn.com/2021/09/06/business/australia-warned-climate-coal-intl-hnk/index.html", "https://bilyonaryo.com/2023/09/06/australia-plan-to-close-largest-coal-power-station-in-doubt/power/", "https://optraffic.com/blog/australia-traffic-congestion-cause-and-solution/ "]
   },
 ];

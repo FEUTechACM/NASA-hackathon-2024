@@ -5,8 +5,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import ResponsiveNarrationPlayer from "./narration";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import ResponsiveNarrationPlayer from "./narration";
 interface ExtendedContinentDrawerProps {
     selectedContinent: Continent | null;
     onClose: () => void;
@@ -102,9 +103,27 @@ export default function ExtendedContinentDrawer({ selectedContinent, onClose }: 
                                                 <p className="text-primary mb-4">{selectedContinent.description}</p>                                </div>
                                         </TabsContent>
 
-                                        <TabsContent value="story">
-                                            <p className="text-sm text-primary">{selectedContinent.story}</p>
+
+                                        <TabsContent value="story" className="w-full">
+                                            <p className="text-sm text-primary mb-4">{selectedContinent.story}</p>
+                                            <div className="w-full aspect-[16/9] relative group">
+                                                <Link href={`/map/${selectedContinent.id}`} target="_blank">
+                                                    <Image
+                                                        src={selectedContinent.continentPath}
+                                                        alt={`${selectedContinent.name} map`}
+                                                        layout="fill"
+                                                        objectFit="contain"
+                                                        className="rounded-md transition-opacity group-hover:opacity-75"
+                                                    />
+                                                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <span className="bg-black bg-opacity-75 text-white px-4 py-2 rounded text-lg">
+                                                            View map of {selectedContinent.name}
+                                                        </span>
+                                                    </div>
+                                                </Link>
+                                            </div>
                                         </TabsContent>
+
                                         <TabsContent value="references">
                                             <h3 className="text-lg font-bold text-primary mb-2">Overview References</h3>
                                             <ul className="list-disc list-inside text-sm text-primary">
