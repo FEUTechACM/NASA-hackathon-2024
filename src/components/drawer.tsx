@@ -15,16 +15,13 @@ export default function ExtendedContinentDrawer({ selectedContinent, onClose }: 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const nextImage = () => {
         if (!selectedContinent) return;
-        setCurrentImageIndex((prevIndex) =>
-            (prevIndex + 1) % selectedContinent.images.length
-        );
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % selectedContinent.images.length);
     };
 
     const prevImage = () => {
         if (!selectedContinent) return;
-        setCurrentImageIndex((prevIndex) =>
-            (prevIndex - 1 + selectedContinent.images.length) % selectedContinent.images.length
-        );
+        setCurrentImageIndex((prevIndex) => (prevIndex - 1 + selectedContinent.images.length) % selectedContinent.images.length);
+
     }
 
     useEffect(() => {
