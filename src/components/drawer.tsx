@@ -115,7 +115,7 @@ export default function ExtendedContinentDrawer({ selectedContinent, onClose }: 
                                                         objectFit="contain"
                                                         className="rounded-md transition-opacity group-hover:opacity-75"
                                                     />
-                                                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 opacity-80 group-hover:opacity-100 transition-opacity">
                                                         <span className="bg-black bg-opacity-75 text-white px-4 py-2 rounded text-lg">
                                                             View map of {selectedContinent.name}
                                                         </span>
