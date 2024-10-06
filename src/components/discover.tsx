@@ -30,12 +30,12 @@ export default function Component() {
                     <DialogHeader>
                         <DialogTitle>Hello!</DialogTitle>
                         <DialogDescription>
-                            If you are reading this, humans have perished and this is a record of what happened to humanity's legacy.                         </DialogDescription>
+                            If you are reading this, humans have perished and this is a record of what happened to humanity&apos;s legacy.                         </DialogDescription>
                     </DialogHeader>
                     <p className="text-justify">
                         Records reveal an unsettling upward trend in greenhouse gas emissions over time. CO2 levels were meticulously documented in regions like Texas, Tutuila, the Republic of Korea, Indonesia, and Algeria, showing a persistent rise in carbon emissions due to industrialization, energy production, and transportation. Meanwhile, methane emissions were recorded in places such as Taipei, Guam, Israel, and Mexico, driven by agricultural practices, waste management, and fossil fuel extraction.
                     </p>
-                    <p className="text-justify"> These documented trends underscore the growing environmental challenge posed by rising greenhouse gases, painting a stark picture of humanity's impact on the planet. This message serves as a testament to our actions and their consequences. May you learn from our past and forge a path toward a better future.</p>
+                    <p className="text-justify"> These documented trends underscore the growing environmental challenge posed by rising greenhouse gases, painting a stark picture of humanity&apos;s impact on the planet. This message serves as a testament to our actions and their consequences. May you learn from our past and forge a path toward a better future.</p>
                 </DialogContent>
             </Dialog>
         </div>
