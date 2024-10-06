@@ -1,52 +1,10 @@
-// "use client";
-// import ExtendedContinentDrawer from "@/components/drawer";
-// import World from "@/components/globe";
-// import SettingsComponent from "@/components/settings";
-// import { useState } from 'react';
-
-// export interface Continent {
-//   name: string;
-//   lat: number;
-//   lng: number;
-//   size: number;
-//   color: string;
-//   images: string[];
-//   description: string;
-//   story: string;
-//   references: string[];
-// }
-
-// const Page = () => {
-//   const [selectedContinent, setSelectedContinent] = useState<Continent | null>(null);
-
-//   const handleContinentSelect = (continent: Continent) => {
-//     setSelectedContinent(prevContinent =>
-//       prevContinent?.name === continent.name ? null : continent
-//     );
-//   };
-
-//   return (
-//     <main>
-//       <SettingsComponent />
-//       <World
-//         onSelectContinent={handleContinentSelect}
-//         selectedContinent={selectedContinent}
-//       />
-//       <ExtendedContinentDrawer
-//         selectedContinent={selectedContinent}
-//         onClose={() => setSelectedContinent(null)}
-//       />
-//     </main>
-//   );
-// };
-
-// export default Page;
 "use client";
+
+import { useState } from 'react';
 import ExtendedContinentDrawer from "@/components/drawer";
-import World from "@/components/globe";
 import SettingsComponent from "@/components/settings";
 import { Button } from "@/components/ui/button";
-import { useState } from 'react';
+import GlobeWrapper from "@/components/globewrapper";
 
 export interface Continent {
   name: string;
@@ -82,7 +40,7 @@ const Page = () => {
   return (
     <main>
       <SettingsComponent />
-      <World
+      <GlobeWrapper
         continents={continents}
         onSelectContinent={handleContinentSelect}
         selectedContinent={selectedContinent}
