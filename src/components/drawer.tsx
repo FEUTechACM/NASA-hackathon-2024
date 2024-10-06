@@ -104,8 +104,16 @@ export default function ExtendedContinentDrawer({ selectedContinent, onClose }: 
                                             <p className="text-sm text-primary">{selectedContinent.story}</p>
                                         </TabsContent>
                                         <TabsContent value="references">
+                                            <h3 className="text-lg font-bold text-primary mb-2">Overview References</h3>
                                             <ul className="list-disc list-inside text-sm text-primary">
                                                 {selectedContinent.references.map((reference, index) => (
+                                                    <li key={index}>{reference}</li>
+                                                ))}
+                                            </ul>
+                                            <br />
+                                            <h3 className="text-lg font-bold text-primary mb-2">Image Sources</h3>
+                                            <ul className="list-disc list-inside text-sm text-primary">
+                                                {selectedContinent.imageReferences.map((reference, index) => (
                                                     <li key={index}>{reference}</li>
                                                 ))}
                                             </ul>
