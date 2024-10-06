@@ -4,46 +4,61 @@ import { Html, OrbitControls, PerspectiveCamera, useTexture } from '@react-three
 import { Canvas, useLoader, useThree } from '@react-three/fiber';
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-
+import ResponsiveNarrationPlayer from '../narration';
 // Update the marker data type
-type Marker = {
+export type TMarker = {
     position: [number, number, number];  // Explicitly define as tuple
+    note: string;
+    image: string;
+    story: string;
+    narrationPath: string;
+};
+
+export type MarkerProps = {
+    position: [number, number, number];
+    note: string;
+    story: string;
+    image: string;
+    narrationPath: string;
+    setSelectedMarker: (info: HoverInfo | null) => void;
+};
+
+export type THoverInfo = {
+    narrationPath: string;
     note: string;
     image: string;
     story: string;
 };
 
-// Define the marker data with the correct type
-const markers: Marker[] = [
+const markers: TMarker[] = [
     {
-        position: [-2.8, 0.5, -1.8], note: "Nigeria", image: "/placeholder.svg?height=200&width=300", story: "Nigeria, the landscape transforms as forests yield to fields and cities rise from the earth. This shift in land use carves a substantial mark on Africa's carbon footprint. The story of progress intertwines with the breath of the land, echoing both growth and its environmental toll."
+        position: [-2.8, 0.5, -1.8], note: "Nigeria", image: "/placeholder.svg?height=200&width=300", story: "Nigeria, the landscape transforms as forests yield to fields and cities rise from the earth. This shift in land use carves a substantial mark on Africa's carbon footprint. The story of progress intertwines with the breath of the land, echoing both growth and its environmental toll.",
+        narrationPath: "/sound/nigeria.mp3",
     },
     {
         position: [3.6, 0.5, 1], note: "Uganda", image: "/placeholder.svg?height=200&width=300", story:
-            "Uganda, the aroma of burning leaves fills the air as they crackle in cooking fires. Methane rises, a silent companion to the meals prepared. This ancient practice whispers tales of tradition and necessity, blending with the modern world's unseen impacts."
+            "Uganda, the aroma of burning leaves fills the air as they crackle in cooking fires. Methane rises, a silent companion to the meals prepared. This ancient practice whispers tales of tradition and necessity, blending with the modern world's unseen impacts.",
+        narrationPath: "/sound/uganda.mp3",
     },
     {
-        position: [0.2, 0.5, 1], note: "Congo Valley", image: "/placeholder.svg?height=200&width=300", story: "Congo Valley, the tale of carbon emissions begins with the sound of axes and saws.Vast rainforests bow to agriculture and logging, releasing stored carbon into the air.This transformation etches its mark on Africa's carbon footprint, blending the rhythm of progress with echoes of loss."
+        position: [0.2, 0.5, 1], note: "Congo Valley", image: "/placeholder.svg?height=200&width=300", story: "Congo Valley, the tale of carbon emissions begins with the sound of axes and saws.Vast rainforests bow to agriculture and logging, releasing stored carbon into the air.This transformation etches its mark on Africa's carbon footprint, blending the rhythm of progress with echoes of loss.",
+        narrationPath: "/sound/congo-valley.mp3",
     },
-    { position: [4, 0.5, -1.8], note: "Ethiopia", image: "/placeholder.svg?height=200&width=300", story: "Ethiopia, vast livestock farms stretch across the land, where animals graze and grow. Methane rises from their digestion, a silent yet potent contributor to the air. This scene of pastoral life intertwines with the threads of environmental impact, weaving a tale of tradition and change.Ethiopia, vast livestock farms stretch across the land, where animals graze and grow.Methane rises from their digestion, a silent yet potent contributor to the air.This scene of pastoral life intertwines with the threads of environmental impact, weaving a tale of tradition and change." },
+    {
+        position: [4, 0.5, -1.8], note: "Ethiopia", image: "/placeholder.svg?height=200&width=300", story: "Ethiopia, vast livestock farms stretch across the land, where animals graze and grow. Methane rises from their digestion, a silent yet potent contributor to the air. This scene of pastoral life intertwines with the threads of environmental impact, weaving a tale of tradition and change.Ethiopia, vast livestock farms stretch across the land, where animals graze and grow.Methane rises from their digestion, a silent yet potent contributor to the air.This scene of pastoral life intertwines with the threads of environmental impact, weaving a tale of tradition and change.",
+        narrationPath: "/sound/ethiopia.mp3",
+    },
+
 ];
 
-interface MarkerProps {
-    position: [number, number, number];
-    note: string;
-    story: string;
-    image: string;
-    setSelectedMarker: (info: HoverInfo | null) => void;
-}
-
-function Marker({ position, note, image, setSelectedMarker, story }: MarkerProps) {
+export function Marker({ position, note, image, setSelectedMarker, story, narrationPath }: MarkerProps) {
     const ref = useRef<THREE.Mesh>(null);
 
     return (
         <mesh
             ref={ref}
             position={position}
-            onClick={() => setSelectedMarker({ note, image, story })}
+            onClick={() => setSelectedMarker({ note, image, story, narrationPath })}
         >
             <sphereGeometry args={[0.2, 32, 32]} />
             <meshStandardMaterial color="red" emissive="red" emissiveIntensity={0.5} />
@@ -55,10 +70,11 @@ interface HoverInfo {
     note: string;
     image: string;
     story: string;
+    narrationPath: string;
 }
 
 
-function Background() {
+export function Background() {
     const texture = useTexture('/img/smoke.png');
     const { scene } = useThree();
 
@@ -111,6 +127,7 @@ function IsometricMap() {
                     <div className="absolute bottom-4 left-4 bg-black bg-opacity-75 text-white p-4 rounded-lg">
                         <h2 className="text-xl mb-2 font-bold">{selectedMarker.note}</h2>
                         <p>{selectedMarker.story}</p>
+                        <ResponsiveNarrationPlayer narrationPath={selectedMarker.narrationPath} />
                         <button
                             className="mt-2 px-4 py-2 bg-red-500 text-white rounded"
                             onClick={() => setSelectedMarker(null)}

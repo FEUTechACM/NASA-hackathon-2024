@@ -72,18 +72,18 @@ const ResponsiveNarrationPlayer: React.FC<NarrationPath> = ({ narrationPath }) =
     };
 
     return (
-        <div className="w-full max-w-3xl bg-card rounded-lg shadow-md p-4 space-y-4">
+        <div className="w-full max-w-3xl bg-transparent rounded-lg shadow-md p-4 space-y-4">
             <audio ref={audioRef} src={narrationPath} preload="metadata" />
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <div className="flex items-center space-x-2">
-                    <Button variant="outline" size="icon" onClick={() => audioRef.current && (audioRef.current.currentTime -= 10)} aria-label="Rewind 10 seconds">
+                    <Button variant="ghost" size="icon" onClick={() => audioRef.current && (audioRef.current.currentTime -= 10)} aria-label="Rewind 10 seconds">
                         <Rewind className="h-4 w-4" />
                     </Button>
-                    <Button variant="outline" size="icon" onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"}>
+                    <Button variant="ghost" size="icon" onClick={togglePlay} aria-label={isPlaying ? "Pause" : "Play"}>
                         {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                     </Button>
-                    <Button variant="outline" size="icon" onClick={() => audioRef.current && (audioRef.current.currentTime += 10)} aria-label="Fast forward 10 seconds">
+                    <Button variant="ghost" size="icon" onClick={() => audioRef.current && (audioRef.current.currentTime += 10)} aria-label="Fast forward 10 seconds">
                         <FastForward className="h-4 w-4" />
                     </Button>
                 </div>
