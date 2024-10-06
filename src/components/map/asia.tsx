@@ -104,7 +104,6 @@ function IsometricMap() {
                     <div className="absolute bottom-4 left-4 bg-black bg-opacity-75 text-white p-4 rounded-lg">
                         <h2 className="text-xl mb-2 font-bold">{selectedMarker.note}</h2>
                         <p>{selectedMarker.story}</p>
-                        {/* <img src={selectedMarker.image} alt={selectedMarker.note} className="w-64 h-auto" /> */}
                         <button
                             className="mt-2 px-4 py-2 bg-red-500 text-white rounded"
                             onClick={() => setSelectedMarker(null)}
@@ -114,6 +113,7 @@ function IsometricMap() {
                     </div>
                 </Html>
             )}
+            <button>Hello World</button>
         </>
     );
 }

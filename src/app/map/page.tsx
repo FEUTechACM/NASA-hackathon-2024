@@ -1,10 +1,10 @@
-import MapComponent from "@/components/map/map";
-const Map = () => {
+import AsiaComponent from "@/components/map/asia";
+const AsiaMap = () => {
     return (
         <>
-            <MapComponent />
+            <AsiaComponent />
         </>
     );
 };
 
-export default Map;
+export default AsiaMap;
