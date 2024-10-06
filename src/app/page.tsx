@@ -5,6 +5,7 @@ import GlobeWrapper from "@/components/globewrapper";
 import SettingsComponent from "@/components/settings";
 import { Button } from "@/components/ui/button";
 import { useState } from 'react';
+import Discover from "@/components/discover";
 
 export interface Continent {
   id: string;
@@ -142,6 +143,7 @@ const Page = () => {
 
   return (
     <main className="w-full">
+      <Discover />
       <SettingsComponent />
       <GlobeWrapper
         continents={continents}
