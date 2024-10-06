@@ -1,12 +1,11 @@
 "use client";
 
+import Discover from "@/components/discover";
 import ExtendedContinentDrawer from "@/components/drawer";
 import GlobeWrapper from "@/components/globewrapper";
 import SettingsComponent from "@/components/settings";
 import { Button } from "@/components/ui/button";
 import { useState } from 'react';
-import Discover from "@/components/discover";
-
 export interface Continent {
   id: string;
   name: string;
@@ -133,6 +132,8 @@ const continents: Continent[] = [
 const Page = () => {
   const [selectedContinent, setSelectedContinent] = useState<Continent | null>(null);
   const [clickedContinents, setClickedContinents] = useState<{ [key: string]: boolean; }>({});
+  const [soundEnabled, setSoundEnabled] = useState(false);
+  const [volume, setVolume] = useState(50);
 
   const handleContinentSelect = (continent: Continent) => {
     setClickedContinents(prev => ({ ...prev, [continent.name]: true }));
@@ -143,8 +144,10 @@ const Page = () => {
 
   return (
     <main className="w-full">
-      <Discover />
-      <SettingsComponent />
+      <Discover soundEnabled={soundEnabled} setSoundEnabled={setSoundEnabled} />
+      <SettingsComponent {
+        ...{ soundEnabled, setSoundEnabled, volume, setVolume }
+      } />
       <GlobeWrapper
         continents={continents}
         onSelectContinent={handleContinentSelect}

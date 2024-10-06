@@ -57,10 +57,10 @@ const teamMembers = [
 
 ];
 
-export default function SettingsComponent() {
+import { ISound, IVolume } from "./discover";
+
+const SettingsComponent: React.FC<ISound & IVolume> = ({ setSoundEnabled, soundEnabled, volume, setVolume }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [soundEnabled, setSoundEnabled] = useState(false);
-    const [volume, setVolume] = useState(50);
     const [showCredits, setShowCredits] = useState(false);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -221,4 +221,6 @@ export default function SettingsComponent() {
             />
         </>
     );
-}
+};
+
+export default SettingsComponent;
