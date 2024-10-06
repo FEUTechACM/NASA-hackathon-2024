@@ -29,8 +29,10 @@ const continents: Continent[] = [
 
 const Page = () => {
   const [selectedContinent, setSelectedContinent] = useState<Continent | null>(null);
+  const [clickedContinents, setClickedContinents] = useState<{ [key: string]: boolean; }>({});
 
   const handleContinentSelect = (continent: Continent) => {
+    setClickedContinents(prev => ({ ...prev, [continent.name]: true }));
     setSelectedContinent(prevContinent =>
       prevContinent?.name === continent.name ? null : continent
     );
@@ -48,15 +50,14 @@ const Page = () => {
         selectedContinent={selectedContinent}
         onClose={() => setSelectedContinent(null)}
       />
-      <div className="fixed inset-x-0 bottom-0 p-1 sm:p-2 bg-transparent">
+      <div className="fixed inset-x-0 z-40 bottom-0 p-1 sm:p-2 bg-transparent">
         <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 max-w-3xl mx-auto">
           {continents.map((continent) => (
             <Button
               key={continent.name}
               variant="outline"
               onClick={() => handleContinentSelect(continent)}
-              className={`${selectedContinent?.name === continent.name ? "bg-green-500 hover:bg-green-600 text-white" : ""}`}
-            >
+              className={`${clickedContinents[continent.name] ? "bg-green-500 hover:bg-green-600 text-white" : ""}`}            >
               {continent.name}
             </Button>
           ))}
