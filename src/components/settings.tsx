@@ -10,10 +10,9 @@ import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
-    DropdownMenuTrigger,
+    DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -62,7 +61,6 @@ export default function SettingsComponent() {
     const [isOpen, setIsOpen] = useState(false);
     const [soundEnabled, setSoundEnabled] = useState(false);
     const [volume, setVolume] = useState(50);
-    const [skin, setSkin] = useState("Natural");
     const [showCredits, setShowCredits] = useState(false);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -168,17 +166,6 @@ export default function SettingsComponent() {
                                     </div>
                                 )}
                             </div>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuLabel>Earth Skin</DropdownMenuLabel>
-                            <DropdownMenuItem onClick={() => setSkin("Natural")}>
-                                {skin === "Natural" && "✓ "}Natural
-                            </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => setSkin("Day")}>
-                                {skin === "Day" && "✓ "}Day
-                            </DropdownMenuItem>
-                            <DropdownMenuItem onClick={() => setSkin("Night")}>
-                                {skin === "Night" && "✓ "}Night
-                            </DropdownMenuItem>
                         </motion.div>
                     </DropdownMenuContent>
                 </DropdownMenu>
