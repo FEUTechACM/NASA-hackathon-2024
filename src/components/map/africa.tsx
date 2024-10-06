@@ -20,14 +20,15 @@ export type MarkerProps = {
     story: string;
     image: string;
     narrationPath: string;
-    setSelectedMarker: (info: HoverInfo | null) => void;
+    setSelectedMarker: (info: THoverInfo | null) => void;
 };
 
 export type THoverInfo = {
-    narrationPath: string;
     note: string;
     image: string;
     story: string;
+    narrationPath: string;
+    position: [number, number, number];
 };
 
 const markers: TMarker[] = [
@@ -58,19 +59,12 @@ export function Marker({ position, note, image, setSelectedMarker, story, narrat
         <mesh
             ref={ref}
             position={position}
-            onClick={() => setSelectedMarker({ note, image, story, narrationPath })}
+            onClick={() => setSelectedMarker({ note, image, story, narrationPath, position })}
         >
             <sphereGeometry args={[0.2, 32, 32]} />
             <meshStandardMaterial color="red" emissive="red" emissiveIntensity={0.5} />
         </mesh>
     );
-}
-
-interface HoverInfo {
-    note: string;
-    image: string;
-    story: string;
-    narrationPath: string;
 }
 
 
@@ -102,7 +96,7 @@ export function Background() {
 
 function IsometricMap() {
     const [mapSize] = useState({ width: 19.20, height: 10.80 });
-    const [selectedMarker, setSelectedMarker] = useState<HoverInfo | null>(null);
+    const [selectedMarker, setSelectedMarker] = useState<THoverInfo | null>(null);
     const texture = useLoader(THREE.TextureLoader, '/map/africa.png');
 
     const { camera } = useThree();
@@ -111,6 +105,13 @@ function IsometricMap() {
         camera.position.set(8, 8, 8);
         camera.lookAt(0, 0, 0);
     }, [camera]);
+
+    useEffect(() => {
+        if (selectedMarker) {
+            camera.position.set(selectedMarker.position[0] + 1, selectedMarker.position[1] + 10, selectedMarker.position[2] + 2);
+            camera.lookAt(selectedMarker.position[0], selectedMarker.position[1], selectedMarker.position[2]);
+        }
+    }, [camera, selectedMarker]);
 
     return (
         <>

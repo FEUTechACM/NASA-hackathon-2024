@@ -46,13 +46,20 @@ function IsometricMap() {
         camera.lookAt(0, 0, 0);
     }, [camera]);
 
+    useEffect(() => {
+        if (selectedMarker) {
+            camera.position.set(selectedMarker.position[0] + 1, selectedMarker.position[1] + 10, selectedMarker.position[2] + 2);
+            camera.lookAt(selectedMarker.position[0], selectedMarker.position[1], selectedMarker.position[2]);
+        }
+    }, [camera, selectedMarker]);
+
     return (
         <>
             <Background />
             <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
                 <boxGeometry args={[mapSize.width, mapSize.height, 0.5]} />
                 <meshStandardMaterial map={texture} />
-            </mesh>
+            </mesh> 1
             {markers.map((marker, index) => (
                 <Marker key={index} {...marker} setSelectedMarker={setSelectedMarker} />
             ))}

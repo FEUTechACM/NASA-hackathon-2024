@@ -39,6 +39,13 @@ function IsometricMap() {
         camera.lookAt(0, 0, 0);
     }, [camera]);
 
+    useEffect(() => {
+        if (selectedMarker) {
+            camera.position.set(selectedMarker.position[0] + 1, selectedMarker.position[1] + 10, selectedMarker.position[2] + 2);
+            camera.lookAt(selectedMarker.position[0], selectedMarker.position[1], selectedMarker.position[2]);
+        }
+    }, [camera, selectedMarker]);
+
     return (
         <>
             <Background />

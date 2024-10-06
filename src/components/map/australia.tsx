@@ -15,7 +15,9 @@ const markers: TMarker[] = [
     {
         position: [0, 0.5, 0],
         narrationPath: "/sound/australia.mp3",
-        note: "Australia", image: "/placeholder.svg?height=200&width=300", story: "Australia faces serious problems with carbon emissions due to the burning of fossil fuels for fuel and transport, as well as deforestation. The coal industry is the largest contributor to CO2 emissions, with coal-fired power plants producing the most. In addition, the mining sector, which produces coal, iron, and other minerals, contributes to emissions through heavy machinery and transport. Agricultural development, especially animal husbandry, leads to deforestation, increasing natural growth. Logging companies also help convert forests into timber."
+        note: "Australia",
+        image: "/placeholder.svg?height=200&width=300",
+        story: "Australia faces serious problems with carbon emissions due to the burning of fossil fuels for fuel and transport, as well as deforestation. The coal industry is the largest contributor to CO2 emissions, with coal-fired power plants producing the most. In addition, the mining sector, which produces coal, iron, and other minerals, contributes to emissions through heavy machinery and transport. Agricultural development, especially animal husbandry, leads to deforestation, increasing natural growth. Logging companies also help convert forests into timber."
     },
 ];
 
@@ -31,6 +33,13 @@ function IsometricMap() {
         camera.lookAt(0, 0, 0);
     }, [camera]);
 
+    useEffect(() => {
+        if (selectedMarker) {
+            camera.position.set(selectedMarker.position[0] + 1, selectedMarker.position[1] + 10, selectedMarker.position[2] + 2);
+            camera.lookAt(selectedMarker.position[0], selectedMarker.position[1], selectedMarker.position[2]);
+        }
+    }, [camera, selectedMarker]);
+
     return (
         <>
             <Background />
@@ -39,7 +48,13 @@ function IsometricMap() {
                 <meshStandardMaterial map={texture} />
             </mesh>
             {markers.map((marker, index) => (
-                <Marker key={index} {...marker} setSelectedMarker={setSelectedMarker} />
+                <Marker key={index}
+                    story={marker.story}
+                    note={marker.note}
+                    image={marker.image}
+                    position={marker.position}
+                    narrationPath={marker.narrationPath}
+                    setSelectedMarker={setSelectedMarker} />
             ))}
             {selectedMarker && (
                 <Html fullscreen>
