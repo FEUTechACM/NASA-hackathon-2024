@@ -48,7 +48,7 @@ export default function ExtendedContinentDrawer({ selectedContinent, onClose }: 
                             animate={{ y: "5%" }}
                             exit={{ y: "100%" }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="fixed inset-x-0 bottom-0 z-50 w-full sm:w-[800px] mx-auto bg-background/80 backdrop-blur-sm border rounded-t-lg shadow-lg"
+                            className="fixed inset-x-0 bottom-0 z-50 w-full md:w-[800px] mx-auto bg-background/80 backdrop-blur-sm border rounded-t-lg shadow-lg"
                             style={{ maxHeight: "calc(80vh - 40px)" }}
                         >
                             <ScrollArea className="h-[calc(95vh-40px)]">
